@@ -1,14 +1,12 @@
 " Automatically executes filetype plugin indent on and syntax enable
 call plug#begin('~/.vim/plugged')
+
 " Theme
 Plug 'arcticicestudio/nord-vim'
 
 " fzf-vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
-" Tree
-Plug 'preservim/nerdtree'
 
 " Linting
 Plug 'dense-analysis/ale'
@@ -21,12 +19,6 @@ colorscheme nord
 " Line numbers
 set nu
 
-" NOTE: Replaced with ALE's fixing engine, see
-" ~/.vim/ftplugin/ and :ALEInfo in specific files.
-" Enabled linters and fixers must be installed
-" Set autopep8 for gq for py
-" au FileType python setlocal formatprg=autopep8\ -
-
 " Bind esc to jk in insert mode
 inoremap jk <Esc>
 
@@ -35,4 +27,3 @@ set incsearch
 
 " Case insensitive search
 set ignorecase
-
