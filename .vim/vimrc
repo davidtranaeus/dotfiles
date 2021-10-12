@@ -11,7 +11,12 @@ Plug 'junegunn/fzf.vim'
 " Linting
 Plug 'dense-analysis/ale'
 
+" Show git diffs
+Plug 'airblade/vim-gitgutter'
 call plug#end()
+
+" git-gutter delay is governed by updatetime
+set updatetime=100
 
 " Theme
 colorscheme nord
@@ -27,3 +32,7 @@ set incsearch
 
 " Case insensitive search
 set ignorecase
+
+" Use new regular expression engine
+" Fixes slow (and broken) syntax highlighting in ts files
+set re=0

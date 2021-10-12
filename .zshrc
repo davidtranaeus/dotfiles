@@ -3,5 +3,9 @@ ZSH_THEME="robbyrussell"
 
 source $ZSH/oh-my-zsh.sh
 
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
+# Git aliases
+alias gs="git status"
+alias gap="git add -p"
+alias gcm="git checkout master"
+
+source ~/.extras.sh
