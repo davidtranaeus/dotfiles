@@ -8,10 +8,11 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Tree
-"Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
 
 " Linting
 Plug 'dense-analysis/ale'
+
 call plug#end()
 
 " Theme
@@ -20,8 +21,11 @@ colorscheme nord
 " Line numbers
 set nu
 
+" NOTE: Replaced with ALE's fixing engine, see
+" ~/.vim/ftplugin/ and :ALEInfo in specific files.
+" Enabled linters and fixers must be installed
 " Set autopep8 for gq for py
-au FileType python setlocal formatprg=autopep8\ -
+" au FileType python setlocal formatprg=autopep8\ -
 
 " Bind esc to jk in insert mode
 inoremap jk <Esc>
