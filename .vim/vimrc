@@ -1,4 +1,5 @@
-" Install vim from brew?
+" Note: brew version of vim (compiled with python3) is required for
+" jedi-vim, probably better anyways
 
 " Automatically executes filetype plugin indent on and syntax enable
 call plug#begin('~/.vim/plugged')
