@@ -37,6 +37,10 @@ set nu
 " Bind esc to jk in insert mode
 inoremap jk <Esc>
 
+" Allow backspace on insert mode
+" https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
+set backspace=indent,eol,start
+
 " Incremental search
 set incsearch
 
