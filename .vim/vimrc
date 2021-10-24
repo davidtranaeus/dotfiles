@@ -15,14 +15,14 @@ Plug 'dense-analysis/ale' " :ALEInfo
 Plug 'airblade/vim-gitgutter'
 
 " Themes
-" Plug 'arcticicestudio/nord-vim' " nord
-" Plug 'sickill/vim-monokai' 	" monokai
-" Plug 'tomasr/molokai'		" molokai
-" Plug 'morhetz/gruvbox' 	" gruvbox
 Plug 'tomasiser/vim-code-dark'  " codedark
 
 " Python completion
 Plug 'davidhalter/jedi-vim' 	" :verbose JediDebugInfo
+
+Plug 'tpope/vim-surround'
+
+" Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " git-gutter delay is governed by updatetime
