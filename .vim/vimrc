@@ -50,3 +50,6 @@ set ignorecase
 " Use new regular expression engine
 " Fixes slow (and broken) syntax highlighting in ts files
 set re=0
+
+" Commands
+:command Vimrc vi ~/.vim/vimrc
