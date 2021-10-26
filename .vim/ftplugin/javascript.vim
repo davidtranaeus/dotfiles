@@ -1,3 +1,3 @@
-" let b:ale_fixers = ["eslint"]
-" let b:ale_linters = ["eslint"]
-" These does not work for some reason..
+" Make sure you have an eslint config
+let b:ale_fixers = ["eslint"]
+let b:ale_linters = ['eslint']
