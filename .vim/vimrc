@@ -10,7 +10,7 @@ Plug 'junegunn/fzf.vim'
 " install bat with brew for preview window highlighting
 
 " Linting
-Plug 'dense-analysis/ale' " :ALEInfo
+Plug 'dense-analysis/ale'	" :ALEInfo
 
 " Show git diffs
 Plug 'airblade/vim-gitgutter'
@@ -22,8 +22,11 @@ Plug 'tomasiser/vim-code-dark'  " codedark
 Plug 'davidhalter/jedi-vim' 	" :verbose JediDebugInfo
 
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'	" gc, gcc
 
-" Plug 'editorconfig/editorconfig-vim'
+" Overides any specific ftplugin indentation settings
+" Run with equalprg
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " git-gutter delay is governed by updatetime
