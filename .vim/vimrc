@@ -15,7 +15,6 @@ Plug 'dense-analysis/ale'	" :ALEInfo
 " Show git diffs
 Plug 'airblade/vim-gitgutter'
 
-" Themes
 Plug 'tomasiser/vim-code-dark'  " codedark
 
 " Python completion
@@ -27,33 +26,50 @@ Plug 'tpope/vim-commentary'	" gc, gcc
 " Overides any specific ftplugin indentation settings
 " Run with equalprg
 Plug 'editorconfig/editorconfig-vim'
+Plug 'sheerun/vim-polyglot'
+
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'rakr/vim-one'
+" Plug 'tomasr/molokai'
+" Plug 'sickill/vim-monokai'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'morhetz/gruvbox'
+" Plug 'ayu-theme/ayu-vim'
+" Plug 'joshdick/onedark.vim'
 call plug#end()
 
-" git-gutter delay is governed by updatetime
-set updatetime=100
 
-" Theme
+" THEME
 colorscheme codedark
 
-" Line numbers
-set nu
 
+" INTERFACE
+set cursorline
+set rnu " relativelinenumber
+set nu " show current line nu
+" set laststatus=1
+
+
+" SEARCH
+set incsearch
+set ignorecase
+
+
+" COMMANDS AND BINDINGS
+:command Vimrc tabe ~/.vim/vimrc
 " Bind esc to jk in insert mode
-inoremap jk <Esc>
+inoremap jk <Esc> 
+" Set leader to " "?
 
 " Allow backspace on insert mode
 " https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
 set backspace=indent,eol,start
 
-" Incremental search
-set incsearch
 
-" Case insensitive search
-set ignorecase
-
+" OTHER
 " Use new regular expression engine
 " Fixes slow (and broken) syntax highlighting in ts files
 set re=0
-
-" Commands
-:command Vimrc tabe ~/.vim/vimrc
+" git-gutter delay is governed by updatetime
+set updatetime=100
