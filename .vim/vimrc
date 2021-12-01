@@ -59,7 +59,7 @@ set ignorecase
 " COMMANDS AND BINDINGS
 :command Vimrc tabe ~/.vim/vimrc
 " Bind esc to jk in insert mode
-inoremap jk <Esc> 
+inoremap jk <Esc>
 " Set leader to " "?
 
 " Allow backspace on insert mode
