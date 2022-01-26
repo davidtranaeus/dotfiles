@@ -1,0 +1,4 @@
+Iterm customizations:
+- font: Menlo
+- line height: 120
+- theme: Smoooth
