@@ -2,3 +2,5 @@
 .vim/plugged/
 .vim/.netrwhist
 **/*.swp
+
+nvim/plugged/
