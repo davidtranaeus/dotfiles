@@ -26,6 +26,21 @@ Plug 'airblade/vim-gitgutter'
 Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
 Plug 'junegunn/fzf.vim'
 
+Plug 'neovim/nvim-lspconfig'
 vim.call('plug#end')
 
 -- require('gitsigns').setup()
+
+-- LSP configs
+-- https://github.com/neovim/nvim-lspconfig
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+end
+
+-- how can pyright installed with a global npm version be used when there is
+-- another different local npm version
+-- how does pyright know which local Python version is used
+require'lspconfig'.pyright.setup{
+    on_attach = on_attach,
+}
