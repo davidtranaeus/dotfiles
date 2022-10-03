@@ -1,16 +1,11 @@
 vim.o.termguicolors = true
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.completeopt = "menu"
 vim.g.mapleader = " "
 vim.o.expandtab = true -- always insert spaces
 vim.o.shiftwidth = 4 -- the indent amount
 vim.o.autoindent = true -- same indent as last row
 vim.o.smartindent = true -- for dicts etc.
-
-vim.cmd [[
-    filetype indent off " dont load indent file for file types
-]]
 
 -- Key mapings
 -- remap -> options that makes mapings work recursively (on by default)
@@ -22,11 +17,6 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
 
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin", "~/.config/nvim/plugged")
--- fzf is a fuzzy finder (using find as default command?) without any pre-made
--- vim key bindings
--- ripgrep is a search tool using regex patterns
--- fzf.vim is a vim plugin which integrates fzf in vim for searching for files
--- (find?) and for content (ripgrep)
 Plug("junegunn/fzf", {["do"] = vim.fn["fzf#install"]})
 Plug "junegunn/fzf.vim"
 
@@ -40,19 +30,33 @@ Plug "nvim-lua/plenary.nvim" -- required by null-ls
 -- does the post update hook really work?
 Plug('nvim-treesitter/nvim-treesitter', {["do"] = vim.fn[":TSUpdate"]})
 
-
--- Plug "mhinz/vim-signify"
 Plug "lewis6991/gitsigns.nvim"
 
 Plug "tpope/vim-surround"
+
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+
+Plug 'ray-x/lsp_signature.nvim'
 vim.call("plug#end")
+
+-- require "lsp_signature".setup({
+--     handler_opts = {
+--         border = "none",
+--     },
+--     hint_enable = false,
+-- })
 
 require('gitsigns').setup({
     on_attach = function(bufnr)
         local bufopts = { noremap=true, silent=true, buffer=bufnr }
         -- focus window with <C-w> w
         vim.keymap.set("n", "<leader>hp", package.loaded.gitsigns.preview_hunk, bufopts)
-    end
+    end,
+    preview_config = {
+        border = false,
+    }
 })
 
 require("github-theme").setup({
@@ -65,17 +69,44 @@ local on_attach = function(client, bufnr)
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+    -- completionItem/resolve
+    vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)
     vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
     -- for formatters which does not support ranged formatting (black)
     vim.keymap.set("n", "<leader>gq", vim.lsp.buf.formatting, bufopts)
     -- vim.keymap.set("v", "gq", vim.lsp.buf.range_formatting, bufopts)
 end
 
+vim.o.completeopt="menu,menuone,noselect"
+--local cmp = require'cmp'
+--cmp.setup({
+--    window = {
+--      documentation = cmp.config.disable
+--    },
+--    mapping = cmp.mapping.preset.insert({
+--        -- set to true if enter should default to first option
+--        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+--    }),
+--    sources = cmp.config.sources(
+--        {
+--            { name = 'nvim_lsp', keyword_length = 3 },
+--        }, 
+--        {
+--            { name = 'buffer', keyword_length = 3 },
+--        }
+--    ),
+--    completion = {
+--        autocomplete = false,
+--    }
+--})
+--local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 -- lsp config for various servers: https://github.com/neovim/nvim-lspconfig
 -- Add a pyrightconfig.json for venv settings
 -- { "venv" : "name of virtual env", "venvPath" : "/Users/name/.pyenv/versions" }
 require("lspconfig").pyright.setup{
     on_attach = on_attach,
+    --capabilities = capabilities,
 }
 require("lspconfig").tsserver.setup({
     on_attach = on_attach,
@@ -92,6 +123,7 @@ null_ls.setup({
         null_ls.builtins.formatting.isort,
         null_ls.builtins.diagnostics.flake8,
     },
+    on_attach = on_attach,
 })
 
 -- nvim package manager for lsp, dap, linters, formatters
@@ -104,3 +136,12 @@ require('nvim-treesitter.configs').setup({
         enable = true,
     }
 })
+
+vim.cmd [[
+    filetype indent off " dont load indent file for file types
+]]
+
+-- import on omnifunc https://old.reddit.com/r/neovim/comments/mn8ipa/lsp_add_missing_imports_on_complete_using_the/
+
+-- other clean non plugin bindings and dir structure:
+-- https://github.com/jose-elias-alvarez/dotfiles/blob/main/config/nvim/lua/lsp/init.lua
