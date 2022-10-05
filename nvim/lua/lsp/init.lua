@@ -1,4 +1,3 @@
--- Attach buffer settings after the LS attaches
 local on_attach = function(client, bufnr)
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
 
@@ -6,9 +5,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
     vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)
     vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-    -- for formatters which does not support ranged formatting (black)
-    vim.keymap.set("n", "<leader>gq", vim.lsp.buf.formatting, bufopts)
-    -- vim.keymap.set("v", "gq", vim.lsp.buf.range_formatting, bufopts)
+    vim.keymap.set("n", "<leader>f", vim.lsp.buf.formatting, bufopts)
 end
 
 --local cmp = require'cmp'
@@ -44,7 +41,7 @@ end
 local null_ls = require("null-ls")
 null_ls.setup({
     sources = {
-        null_ls.builtins.formatting.autopep8, -- black does not support ranged formatting
+        null_ls.builtins.formatting.autopep8,
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
         null_ls.builtins.diagnostics.flake8,
