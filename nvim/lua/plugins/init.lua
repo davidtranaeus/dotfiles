@@ -24,12 +24,31 @@ vim.call("plug#end")
 
 require('gitsigns').setup({
     on_attach = function(bufnr)
+        local gs = package.loaded.gitsigns
         local bufopts = { noremap=true, silent=true, buffer=bufnr }
         -- focus window with <C-w> w
-        vim.keymap.set("n", "<leader>hp", package.loaded.gitsigns.preview_hunk, bufopts)
+        vim.keymap.set("n", "<leader>hp", gs.preview_hunk, bufopts)
+
+        -- Navigation
+        vim.keymap.set('n', ']c', function()
+            if vim.wo.diff then return ']c' end
+            vim.schedule(function() gs.next_hunk() end)
+            return '<Ignore>'
+        end, bufopts)
+
+        vim.keymap.set('n', '[c', function()
+            if vim.wo.diff then return '[c' end
+            vim.schedule(function() gs.prev_hunk() end)
+            return '<Ignore>'
+        end, bufopts)
     end,
     preview_config = {
         border = false,
+    },
+    signs = {
+        add = { text = "+" },
+        change = { text = "~" },
+        delete = { text = "-" },
     }
 })
 
