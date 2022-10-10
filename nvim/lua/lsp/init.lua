@@ -31,8 +31,8 @@ cmp.setup({
         ["<C-n>"] = cmp.mapping.select_next_item(),
     },
     sources = {
-        { name = 'nvim_lsp' },
         { name = 'buffer' },
+        { name = 'nvim_lsp' },
     },
     completion = {
         autocomplete = false,
