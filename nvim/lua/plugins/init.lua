@@ -1,7 +1,7 @@
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin", "~/.config/nvim/plugged")
-Plug("junegunn/fzf", {["do"] = vim.fn["fzf#install"]})
-Plug "junegunn/fzf.vim"
+-- Plug("junegunn/fzf", {["do"] = vim.fn["fzf#install"]})
+-- Plug "junegunn/fzf.vim"
 
 Plug "projekt0n/github-nvim-theme"
 
@@ -20,7 +20,16 @@ Plug "tpope/vim-surround"
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
+
+Plug('nvim-telescope/telescope.nvim', {["tag"]= '0.1.0' })
+Plug('nvim-telescope/telescope-fzf-native.nvim', {['do']= 'make' })
 vim.call("plug#end")
+
+require('telescope').load_extension('fzf')
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', 'ff', builtin.find_files, {})
+vim.keymap.set('n', 'fg', builtin.live_grep, {})
+vim.keymap.set('n', 'fb', builtin.buffers, {})
 
 -- netrw articles (the split explorer model)
 -- http://vimcasts.org/blog/2013/01/oil-and-vinegar-split-windows-and-project-drawer/
@@ -47,9 +56,6 @@ require('gitsigns').setup({
             return '<Ignore>'
         end, bufopts)
     end,
-    preview_config = {
-        border = false,
-    },
     signs = {
         add = { text = "+" },
         change = { text = "~" },
@@ -58,7 +64,7 @@ require('gitsigns').setup({
 })
 
 require("github-theme").setup({
-    theme_style = "light"
+    theme_style = "dark"
 })
 
 -- uses global nodejs version
