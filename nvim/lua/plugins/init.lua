@@ -71,9 +71,9 @@ require("github-theme").setup({
 require("mason").setup()
 
 require('nvim-treesitter.configs').setup({
-    ensure_installed = {"python", "javascript", "typescript", "tsx"},
+    ensure_installed = {"python", "javascript", "typescript", "tsx", "html", "css"},
     highlight = {
-        enable = false,
+      enable = true,
     },
 })
 
