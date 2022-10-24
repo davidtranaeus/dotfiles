@@ -10,6 +10,7 @@ Plug "nvim-lua/plenary.nvim" -- required by null-ls
 
 -- does the post update hook really work?
 Plug('nvim-treesitter/nvim-treesitter', {["do"] = vim.fn[":TSUpdate"]})
+-- Plug 'nvim-treesitter/nvim-treesitter-context'
 
 Plug "lewis6991/gitsigns.nvim"
 
