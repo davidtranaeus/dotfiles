@@ -7,6 +7,7 @@ vim.o.shiftwidth = 4 -- the indent amount
 vim.o.autoindent = true -- same indent as last row
 vim.o.smartindent = true -- for dicts etc.
 vim.o.signcolumn = "yes" -- prevents the buffer from jumping
+vim.o.scrolloff = 10
 
 vim.cmd [[
     filetype indent off " dont load indent file for file types
