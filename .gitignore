@@ -1,6 +1,1 @@
-.vim/autoload/
-.vim/plugged/
-.vim/.netrwhist
-**/*.swp
-
 nvim/plugged/
