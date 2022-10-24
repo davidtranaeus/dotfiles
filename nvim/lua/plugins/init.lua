@@ -1,7 +1,5 @@
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin", "~/.config/nvim/plugged")
--- Plug("junegunn/fzf", {["do"] = vim.fn["fzf#install"]})
--- Plug "junegunn/fzf.vim"
 
 Plug "projekt0n/github-nvim-theme"
 
@@ -14,8 +12,6 @@ Plug "nvim-lua/plenary.nvim" -- required by null-ls
 Plug('nvim-treesitter/nvim-treesitter', {["do"] = vim.fn[":TSUpdate"]})
 
 Plug "lewis6991/gitsigns.nvim"
-
-Plug "tpope/vim-surround"
 
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
