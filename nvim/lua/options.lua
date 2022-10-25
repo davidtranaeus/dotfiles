@@ -12,7 +12,6 @@ vim.o.scrolloff = 10
 vim.diagnostic.config({virtual_text = false})
 vim.o.completeopt="menuone,noselect"
 
--- remap -> options that makes mapings work recursively (on by default)
 local opts = { noremap=true, silent=true }
 vim.keymap.set("i", "jk", "<ESC>", opts)
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
@@ -24,8 +23,5 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_command("filetype indent off") -- default indent is bonkers for py
 
--- set a python provider (a venv) for neovim for py plugins, :h python-virtualenv
--- used by mason etc when running python commands, else it falls back to another executable (python3)
--- (mason uses that py to create its own venvs when installing packages)
--- python files become quicker to open because nvim knows the provider path already
-vim.g.python3_host_prog = "/Users/davidtranaeus/.pyenv/versions/neovim/bin/python"
+-- nvims py executable for py plugins, :h python-virtualenv
+vim.g.python3_host_prog = "~/.pyenv/versions/neovim/bin/python"
