@@ -23,3 +23,9 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_command("filetype indent off") -- default indent is bonkers for py
+
+-- set a python provider (a venv) for neovim for py plugins, :h python-virtualenv
+-- used by mason etc when running python commands, else it falls back to another executable (python3)
+-- (mason uses that py to create its own venvs when installing packages)
+-- python files become quicker to open because nvim knows the provider path already
+vim.g.python3_host_prog = "/Users/davidtranaeus/.pyenv/versions/neovim/bin/python"
