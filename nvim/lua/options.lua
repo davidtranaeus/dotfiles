@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd("FileType", {
   command = "setlocal shiftwidth=4",
 })
 
-vim.api.nvim_command("filetype indent off") -- default indent is bonkers for py
+vim.cmd("filetype indent off") -- default indent is bonkers for py
 
 -- nvims py executable for py plugins, :h python-virtualenv
 vim.g.python3_host_prog = "~/.pyenv/versions/neovim/bin/python"

@@ -25,6 +25,7 @@ Plug("nvim-telescope/telescope-fzf-native.nvim", {
   ["do"] = "make",
 })
 vim.call("plug#end")
+vim.cmd("filetype indent off") -- plug end turns it on
 
 require("plugins.configs")
 require("plugins.lsp")
