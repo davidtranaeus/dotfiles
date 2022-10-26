@@ -1,10 +1,10 @@
 local on_attach = function(client, bufnr)
-    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
 
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-    vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-    vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-    vim.keymap.set("n", "<leader>f", vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+  vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+  vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+  vim.keymap.set("n", "<leader>f", vim.lsp.buf.formatting, bufopts)
 end
 
 local has_words_before = function()
@@ -14,51 +14,51 @@ end
 
 local cmp = require("cmp")
 cmp.setup({
-    window = {
-      documentation = cmp.config.disable
-    },
-    mapping = {
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.confirm({ select = true }) -- default to first item
-            elseif vim.bo.buftype ~= "prompt" and has_words_before() then
-                cmp.complete() -- open menu
-            else
-                fallback() -- regular tab
-            end
-        end),
-        ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<C-n>"] = cmp.mapping.select_next_item(),
-    },
-    sources = {
-        { name = "buffer" },
-        { name = "nvim_lsp" },
-    },
-    completion = {
-        autocomplete = false,
-    },
+  window = {
+    documentation = cmp.config.disable
+  },
+  mapping = {
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.confirm({ select = true }) -- default to first item
+      elseif vim.bo.buftype ~= "prompt" and has_words_before() then
+        cmp.complete() -- open menu
+      else
+        fallback() -- regular tab
+      end
+    end),
+    ["<C-p>"] = cmp.mapping.select_prev_item(),
+    ["<C-n>"] = cmp.mapping.select_next_item(),
+  },
+  sources = {
+    { name = "buffer" },
+    { name = "nvim_lsp" },
+  },
+  completion = {
+    autocomplete = false,
+  },
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local servers = { "pyright", "tsserver" }
 for _, lsp in ipairs(servers) do
-    require("lspconfig")[lsp].setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-    })
+  require("lspconfig")[lsp].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
 end
 
 local null_ls = require("null-ls")
 null_ls.setup({
-    sources = {
-        null_ls.builtins.formatting.autopep8,
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.isort,
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.diagnostics.flake8,
-        null_ls.builtins.diagnostics.stylelint
-    },
-    on_attach = on_attach,
+  sources = {
+    null_ls.builtins.formatting.autopep8,
+    null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.isort,
+    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.diagnostics.flake8,
+    null_ls.builtins.diagnostics.stylelint
+  },
+  on_attach = on_attach,
 })
 
 -- debug lua print(vim.inspect(vim.lsp.buf_get_clients()[1].resolved_capabilities))

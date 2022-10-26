@@ -17,8 +17,8 @@ vim.keymap.set("i", "jk", "<ESC>", opts)
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"*.py"},
-    command = "setlocal shiftwidth=4",
+  pattern = {"*.py"},
+  command = "setlocal shiftwidth=4",
 })
 
 vim.api.nvim_command("filetype indent off") -- default indent is bonkers for py
