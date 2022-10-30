@@ -33,6 +33,8 @@ require("nvim-treesitter.configs").setup({
     "html",
     "css",
     "jsonnet",
+    "dockerfile",
+    "yaml",
   },
   highlight = {
     enable = true,
