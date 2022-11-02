@@ -3,6 +3,7 @@ vim.call("plug#begin", "~/.config/nvim/plugged")
 
 Plug "projekt0n/github-nvim-theme"
 
+Plug "dstein64/vim-startuptime"
 Plug "neovim/nvim-lspconfig"
 Plug "williamboman/mason.nvim"
 Plug "jose-elias-alvarez/null-ls.nvim"
