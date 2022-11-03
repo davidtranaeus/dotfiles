@@ -9,8 +9,7 @@ vim.o.smartindent = true -- for dicts etc.
 vim.o.signcolumn = "yes" -- prevents the buffer from jumping
 vim.o.scrolloff = 10
 
-vim.diagnostic.config({virtual_text = false})
-vim.o.completeopt="menuone,noselect"
+vim.o.completeopt="menu,menuone,noselect"
 
 local opts = { noremap=true, silent=true }
 vim.keymap.set("i", "jk", "<ESC>", opts)
