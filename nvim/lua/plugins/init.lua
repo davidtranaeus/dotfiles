@@ -29,5 +29,11 @@ Plug("nvim-telescope/telescope-fzf-native.nvim", {
 vim.call("plug#end")
 vim.cmd("filetype indent off") -- plug end turns it on
 
-require("plugins.configs")
-require("plugins.lsp")
+require("plugins.gitsigns")
+require("plugins.mason")
+require("plugins.telescope")
+require("plugins.treesitter")
+require("plugins.nvim-cmp")
+require("plugins.lspconfig")
+require("plugins.null-ls")
+require("plugins.colorscheme")
