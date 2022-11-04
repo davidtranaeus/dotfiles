@@ -21,7 +21,8 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.cmd("filetype indent off") -- default indent is bonkers for py
-vim.cmd("command Config e ~/.config/nvim/")
+
+vim.env.RC = "$HOME/.config/nvim/"
 
 -- nvims py executable for py plugins, :h python-virtualenv
 vim.g.python3_host_prog = "~/.pyenv/versions/neovim/bin/python"
