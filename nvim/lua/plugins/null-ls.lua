@@ -1,12 +1,17 @@
+utils = require("plugins.utils")
+
 local null_ls = require("null-ls")
+local builtins = null_ls.builtins
+
 null_ls.setup({
   sources = {
-    null_ls.builtins.formatting.autopep8,
-    null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.isort,
-    null_ls.builtins.formatting.prettier,
-    null_ls.builtins.diagnostics.flake8,
-    null_ls.builtins.diagnostics.stylelint,
+    builtins.formatting.autopep8,
+    builtins.formatting.black,
+    builtins.formatting.isort,
+    builtins.formatting.prettier,
+    builtins.diagnostics.flake8,
+    builtins.diagnostics.stylelint,
     builtins.diagnostics.jsonlint,
   },
+  on_attach=utils.on_attach,
 })
