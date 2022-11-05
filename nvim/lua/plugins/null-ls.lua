@@ -1,4 +1,4 @@
-utils = require("plugins.utils")
+local utils = require("plugins.utils")
 
 local null_ls = require("null-ls")
 local builtins = null_ls.builtins
@@ -13,5 +13,5 @@ null_ls.setup({
     builtins.diagnostics.stylelint,
     builtins.diagnostics.jsonlint,
   },
-  on_attach=utils.on_attach,
+  on_attach = utils.on_attach,
 })
