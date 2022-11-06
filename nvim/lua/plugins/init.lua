@@ -1,18 +1,17 @@
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin", "~/.config/nvim/plugged")
 Plug "bluz71/vim-nightfly-guicolors"
-
 Plug "projekt0n/github-nvim-theme"
+Plug "rebelot/kanagawa.nvim"
 
 Plug "dstein64/vim-startuptime"
+
 Plug "neovim/nvim-lspconfig"
 Plug "williamboman/mason.nvim"
 Plug "jose-elias-alvarez/null-ls.nvim"
 Plug "nvim-lua/plenary.nvim"
 
-Plug("nvim-treesitter/nvim-treesitter", {
-  ["commit"] = "4cccb6f494eb255b32a290d37c35ca12584c74d0",
-})
+Plug("nvim-treesitter/nvim-treesitter")
 
 Plug "lewis6991/gitsigns.nvim"
 
