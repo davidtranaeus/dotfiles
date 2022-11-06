@@ -1,15 +1,16 @@
 local utils = require("plugins.utils")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local servers = { "pyright", "tsserver" }
+local lspconfig = require("lspconfig")
 
+local servers = { "pyright", "tsserver", "cssls" }
 for _, lsp in ipairs(servers) do
-  require("lspconfig")[lsp].setup({
+  lspconfig[lsp].setup({
     on_attach = utils.on_attach,
     capabilities = capabilities,
   })
 end
 
-require("lspconfig").sumneko_lua.setup {
+lspconfig.sumneko_lua.setup {
   on_attach = utils.on_attach,
   capabilities = capabilities,
   settings = {
