@@ -1,8 +1,6 @@
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin", "~/.config/nvim/plugged")
 Plug "bluz71/vim-nightfly-guicolors"
-Plug "projekt0n/github-nvim-theme"
-Plug "rebelot/kanagawa.nvim"
 
 Plug "dstein64/vim-startuptime"
 
