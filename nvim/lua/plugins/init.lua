@@ -1,5 +1,8 @@
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin", "~/.config/nvim/plugged")
+Plug "nvim-tree/nvim-tree.lua"
+Plug "nvim-tree/nvim-web-devicons"
+
 Plug "bluz71/vim-nightfly-guicolors"
 
 Plug "dstein64/vim-startuptime"
@@ -35,3 +38,4 @@ require("plugins.nvim-cmp")
 require("plugins.lspconfig")
 require("plugins.null-ls")
 require("plugins.colorscheme")
+require("plugins.nvim-tree")
