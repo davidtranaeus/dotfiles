@@ -5,6 +5,7 @@ local builtins = null_ls.builtins
 
 null_ls.setup({
   sources = {
+    builtins.formatting.autoflake,
     builtins.formatting.autopep8,
     builtins.formatting.black,
     builtins.formatting.isort,
