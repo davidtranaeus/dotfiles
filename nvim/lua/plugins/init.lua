@@ -5,8 +5,6 @@ Plug "nvim-tree/nvim-web-devicons"
 
 Plug "bluz71/vim-nightfly-guicolors"
 
-Plug "dstein64/vim-startuptime"
-
 Plug "neovim/nvim-lspconfig"
 Plug "williamboman/mason.nvim"
 Plug "jose-elias-alvarez/null-ls.nvim"
