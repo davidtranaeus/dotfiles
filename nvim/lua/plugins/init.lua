@@ -11,6 +11,7 @@ Plug "jose-elias-alvarez/null-ls.nvim"
 Plug "nvim-lua/plenary.nvim"
 
 Plug("nvim-treesitter/nvim-treesitter")
+Plug "nvim-treesitter/nvim-treesitter-context"
 
 Plug "lewis6991/gitsigns.nvim"
 
